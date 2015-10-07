@@ -1,6 +1,8 @@
 # typical git ignores
 node_modules
 bower_components
+.DS_Store
+npm-debug.log
 
 # custom ignored files
 data

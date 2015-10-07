@@ -1,0 +1,21 @@
+{
+  "name": "rootes",
+  "version": "0.0.0",
+  "authors": [
+    "Dustin Smith <thedustinsmith@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.3",
+    "font-awesome": "fontawesome#~4.4.0",
+    "jquery": "~2.1.4",
+    "mustache.js": "~2.1.3"
+  }
+}
