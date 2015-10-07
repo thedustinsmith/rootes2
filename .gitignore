@@ -1,0 +1,7 @@
+# typical git ignores
+node_modules
+bower_components
+
+# custom ignored files
+data
+public/stylesheets/style.css
