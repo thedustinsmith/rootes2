@@ -1,40 +1,5 @@
+@bodyFont: 'Oxygen', sans-serif;
+
 @import "mixins.less";
-
-* {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
-
-body {
-    font: 14px 'Oxygen', sans-serif;
-}
-input,
-button,
-textarea,
-select,
-option {
-    font-family: 'Oxygen', sans-serif;
-}
-
-input,
-textarea {
-    padding: 5px;
-    font-size: 1em;
-    color: #555;
-
-    &:focus {
-        outline: 0;
-    }
-}
-
-button {
-    cursor: pointer;
-}
-
-a {
-    color: #00B7FF;
-}
-
-h1 {
-    font-weight: 300;
-}
+@import "base.less";
+@import "admin.less";

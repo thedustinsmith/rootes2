@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    font: 14px @bodyFont;
+    margin: 0;
+    padding: 0;
+    background-color: #F7F7F7;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+}
+
+html,body,.body-container {
+    height: 100%;
+}
+.body-container {
+    width: 900px;
+    padding: 10px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-top: 0;
+    border-bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+input,
+button,
+textarea,
+select,
+option {
+    font: 14px @bodyFont;
+
+}
+
+input,
+textarea {
+    padding: 5px;
+    font-size: 1em;
+    color: #555;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+button {
+    cursor: pointer;
+    &:focus {
+        outline: 0;
+    }
+}
+
+a {
+    color: #00B7FF;
+}
+
+h1 {
+    font-weight: 300;
+    margin-top: 0;
+}
+h2 {
+    margin-top: 0;
+    font-weight: 400;
+}
+.clearfix {
+    zoom: 1;
+    &:before, 
+    &:after { 
+        content:""; 
+        display:table; 
+    }
+    &:after { 
+        clear: both; 
+    }
+}

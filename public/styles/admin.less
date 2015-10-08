@@ -1,0 +1,58 @@
+.admin {
+    .tab-nav {
+        list-style: none;
+        float: left;
+        margin: 0;
+        padding: 0;
+        min-width: 110px;
+        margin-left: -10px;
+        border-top: 1px solid #aaa;
+        
+        button {
+            border: 0;
+            background: 0;
+            padding: 10px 0;
+            width: 100%;
+            border-bottom: 1px solid #aaa;
+
+            &.active {
+                background: #F3F3F3;
+            }
+        }
+    }
+
+    .tab-wrap {
+        float: left;
+        border-left: 1px solid #aaa;
+        min-height: 250px;
+    }
+
+    .tab {
+        display: none;
+        padding: 0 10px;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    .codebit {
+        position: relative;
+
+        label {
+            font-weight: 600;
+            display: block;
+        }
+        pre {
+            background-color: #eee;
+            font-size: 12px;
+            padding: 5px;
+            margin: 0;
+        }
+        .ex {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+        }
+    }
+}

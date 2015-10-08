@@ -13,7 +13,9 @@
   {% endblock %}
 </head>
 <body class="{= bodyClass =}">
-  {% block content %}{% endblock %}
+  <div class="body-container">
+    {% block content %}{% endblock %}
+  </div>
 
   <script src="/jquery/dist/jquery.js"></script>
   <script src="/mustache.js/mustache.js"></script>
@@ -25,6 +27,7 @@
     var app = {};
     app.models = {};
   </script>
+  
   <script src="/scripts/models/productModel.js"></script>
   {% block scripts %}{% endblock %}
 </body>

@@ -30,9 +30,11 @@ var db = require('./db/index');
 // Routes
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var admin = require('./routes/admin');
 var api = require('./routes/api/index');
 app.use('/', routes);
 app.use('/users', users);
+app.use('/admin', admin);
 app.use('/api', api);
 // End Routes
 
