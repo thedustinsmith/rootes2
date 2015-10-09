@@ -1,4 +1,4 @@
-(function (models) {
+(function (models, collections) {
 
     var Product = Backbone.Model.extend({
 
@@ -7,4 +7,11 @@
     });
 
     models.Product = Product;
-})(app.models);
+
+    var ProductCollection = Backbone.Collection.extend({
+        model: Product,
+        url: '/api/products'
+    });
+    
+    collections.Products = ProductCollection;
+})(app.models, app.collections);

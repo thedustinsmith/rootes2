@@ -1,0 +1,29 @@
+.backscratcher {
+    position: relative;
+    min-height: 200px;
+
+    .bs-page {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: opacity .3s, transform .3s;
+    }
+
+    .bs-form-wrap {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    &.edit {
+        .bs-list-wrap {
+            opacity: 0;
+        }
+
+        .bs-form-wrap {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+}

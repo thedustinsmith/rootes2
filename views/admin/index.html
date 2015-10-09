@@ -56,6 +56,44 @@ var product = new app.models.Product({ ID: 1 });
 
             <div class="tab" data-tab="grower">
                 <h2>Growers</h2>
+                <div class="codebit">
+                    <label>Get</label>
+                    <pre>
+var grower = new app.models.Grower({
+    ID: 1
+});
+grower.fetch().done(function () {
+    log(grower.toJSON());
+});
+                    </pre>
+                </div>
+                <div class="codebit">
+                    <label>Update</label>
+                    <pre>
+var grower = new app.models.Grower({ ID: 1 });
+grower.set('Phone', '555.555.5555');
+grower.save();
+                    </pre>
+                </div>
+                <div class="codebit">
+                    <label>Insert</label>
+                    <pre>
+var grower = new app.models.Grower();
+grower.set({ 
+    Name: 'new Grower',
+    Address: '123 Maple Str. Wherever, MO'
+});
+grower.save();
+                    </pre>
+                </div>
+                <div class="codebit">
+                    <label>Delete</label>
+                    <pre>
+var grower = new app.models.Grower({ ID: 1 });
+//grower.destroy();
+                    </pre>
+                </div>
+            </div>
             </div>
 
         </div>

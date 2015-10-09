@@ -6,9 +6,12 @@ var knex = require('knex')({
 });
 
 var bookshelf = require('bookshelf')(knex);
-
-var Product = require('./product')(bookshelf);
+var product = require('./product')(bookshelf);
+var grower = require('./grower')(bookshelf);
 
 module.exports = {
-    Product: Product
+    Product: product.model,
+    Products: product.collection,
+    Grower: grower.model,
+    Growers: grower.collection
 };

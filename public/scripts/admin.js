@@ -31,7 +31,7 @@
 
         $('pre').each(function(){
             var $p = $(this);
-            $p.after('<button class="ex">></button>');
+            $p.after('<button class="ex"><i class="fa fa-terminal"></i></button>');
         });
     };
 
@@ -39,3 +39,26 @@
         init: init
     };
 })(app);
+
+(function (global, models, collections) {
+
+    function init () {
+        var productBs = new Backbone.Backscratcher({
+            el: $('#product-entity-container'),
+            listTemplate: $('#product-list-template').html(),
+            formTemplate: $('#product-form-template').html(),
+            collection: new collections.Products()
+        });
+
+        var growerBs = new Backbone.Backscratcher({
+            el: $('#grower-entity-container'),
+            listTemplate: $('#grower-list-template').html(),
+            formTemplate: $('#grower-form-template').html(),
+            collection: new collections.Growers()
+        });
+    }
+
+    global.admin.forms = {
+        init: init
+    };
+})(app, app.models, app.collections);

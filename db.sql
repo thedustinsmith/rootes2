@@ -1,5 +1,16 @@
 CREATE TABLE Product (
     ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, 
     Name VARCHAR (255) NOT NULL, 
-    RegulationNumber VARCHAR (25) NOT NULL
+    RegulationNumber VARCHAR (25) NOT NULL 
+    IsRemoved BOOLEAN NOT NULL DEFAULT false, 
+    DateRemoved DATETIME
+);
+CREATE TABLE Grower (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL, 
+    Name VARCHAR (255) NOT NULL, 
+    Address VARCHAR (255), 
+    Phone VARCHAR (25), County VARCHAR (255), 
+    DateCreated DATETIME DEFAULT (datetime()), 
+    IsRemoved BOOLEAN NOT NULL DEFAULT false, 
+    DateRemoved DATETIME
 );

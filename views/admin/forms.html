@@ -1,0 +1,116 @@
+{% extends '../layout.html' %}
+
+{% block title %}My Page{% endblock %}
+
+{% block content %}
+<div class="admin">
+    <h1>Rootes Admin Forms</h1>
+
+    <h3>Products</h3>
+    <div id="product-entity-container"></div>
+
+    <h3>Growers</h3>
+    <div id="grower-entity-container"></div>
+</div>
+
+<script id="product-list-template" type="text/template">
+<table class="product-list entity-list">
+    <thead><tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Regulation #</th>
+        <th></th>
+    </tr></thead>
+    <tbody>
+    {{#Items}}
+    <tr data-id="{{ID}}">
+        <td>{{ID}}</td>
+        <td>{{Name}}</td>
+        <td>{{RegulationNumber}}</td>
+        <td>
+            <button class="fa fa-edit entity-edit"></button>
+            <button class="fa fa-trash entity-remove"></button>
+        </td>
+    </tr>
+    {{/Items}}
+    </tbody>
+</table>
+<button class="entity-add">Add a Product</button>
+</script>
+
+<script id="product-form-template" type="text/template">
+    <form>
+        <div class="controls">
+            <label>Name</label>
+            <input type="text" name="Name" />
+        </div>
+        <div class="controls">
+            <label>Regulation #</label>
+            <input type="text" name="RegulationNumber" />
+        </div>
+        <div class="controls">
+            <button type="submit">Save</button>
+            <button class="entity-edit-cancel">cancel</button>
+        </div>
+    </form>
+</script>
+
+<script id="grower-list-template" type="text/template">
+<table class="grower-list entity-list">
+    <thead><tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>County</th>
+        <th></th>
+    </tr></thead>
+    <tbody>
+    {{#Items}}
+    <tr data-id="{{ID}}">
+        <td>{{ID}}</td>
+        <td>{{Name}}</td>
+        <td>{{Address}}</td>
+        <td>{{Phone}}</td>
+        <td>{{County}}</td>
+        <td>
+            <button class="fa fa-edit entity-edit"></button>
+            <button class="fa fa-trash entity-remove"></button>
+        </td>
+    </tr>
+    {{/Items}}
+    </tbody>
+</table>
+<button class="entity-add">Add a Grower</button>
+</script>
+<script id="grower-form-template" type="text/template">
+    <form>
+        <div class="controls">
+            <label>Name</label>
+            <input type="text" name="Name" />
+        </div>
+        <div class="controls">
+            <label>Phone</label>
+            <input type="text" name="Phone" />
+        </div>
+        <div class="controls">
+            <label>County</label>
+            <input type="text" name="County" />
+        </div>
+        <div class="controls">
+            <label>Address</label>
+            <textarea name="Address" />
+        </div>
+        <div class="controls">
+            <button type="submit">Save</button>
+            <button class="entity-edit-cancel">cancel</button>
+        </div>
+    </form>
+</script>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="/scripts/admin.js"></script>
+    <script>app.admin.forms.init();</script>
+{% endblock %}
