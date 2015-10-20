@@ -1,0 +1,73 @@
+{% extends '../layout.html' %}
+{% set bodyClass='embed' %}
+{% block title %}My Page{% endblock %}
+
+{% block content %}
+<div class="admin">
+
+    <h3>Applicators</h3>
+    <div id="applicator-entity-container"></div>
+</div>
+
+<script id="applicator-list-template" type="text/template">
+<table class="applicator-list entity-list">
+    <thead><tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Sprayer Unit</th>
+        <th>License Number</th>
+        <th></th>
+    </tr></thead>
+    <tbody>
+    {{#Items}}
+    <tr data-id="{{ID}}">
+        <td>{{ID}}</td>
+        <td>{{Name}}</td>
+        <td>{{SprayerUnit}}</td>
+        <td>{{LicenseNumber}}</td>
+        <td>
+            <button class="fa fa-edit entity-edit entity-btn"></button>
+            <button class="fa fa-trash entity-remove entity-btn"></button>
+        </td>
+    </tr>
+    {{/Items}}
+    </tbody>
+</table>
+<button class="entity-add"><i class="fa fa-plus"></i>Add an Applicator</button>
+</script>
+
+<script id="applicator-form-template" type="text/template">
+    <form>
+        <div class="controls">
+            <label>Name</label>
+            <input type="text" name="Name" />
+        </div>
+        <div class="controls">
+            <label>Sprayer Unit</label>
+            <input type="text" name="SprayerUnit" />
+        </div>
+        <div class="controls">
+            <label>License Number</label>
+            <input type="text" name="LicenseNumber" />
+        </div>
+        <div class="controls">
+            <button type="submit" class="entity-btn">Save</button>
+            <button class="entity-edit-cancel entity-btn">cancel</button>
+        </div>
+    </form>
+</script>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="/scripts/admin.js"></script>
+
+    <script>
+        app.admin.forms.initCustom(
+            '#applicator-entity-container', 
+            '#applicator-list-template',
+            '#applicator-form-template',
+            new app.collections.Applicators()
+        );
+    </script>
+{% endblock %}

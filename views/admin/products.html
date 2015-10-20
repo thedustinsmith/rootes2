@@ -1,0 +1,66 @@
+{% extends '../layout.html' %}
+{% set bodyClass='embed' %}
+{% block title %}My Page{% endblock %}
+
+{% block content %}
+<div class="admin">
+    <h3>Products</h3>
+    <div id="product-entity-container"></div>
+</div>
+
+<script id="product-list-template" type="text/template">
+<table class="product-list entity-list">
+    <thead><tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Regulation #</th>
+        <th></th>
+    </tr></thead>
+    <tbody>
+    {{#Items}}
+    <tr data-id="{{ID}}">
+        <td>{{ID}}</td>
+        <td>{{Name}}</td>
+        <td>{{RegulationNumber}}</td>
+        <td>
+            <button class="fa fa-edit entity-edit entity-btn"></button>
+            <button class="fa fa-trash entity-remove entity-btn"></button>
+        </td>
+    </tr>
+    {{/Items}}
+    </tbody>
+</table>
+<button class="entity-add"><i class="fa fa-plus"></i>Add a Product</button>
+</script>
+
+<script id="product-form-template" type="text/template">
+    <form>
+        <div class="controls">
+            <label>Name</label>
+            <input type="text" name="Name" />
+        </div>
+        <div class="controls">
+            <label>Regulation #</label>
+            <input type="text" name="RegulationNumber" />
+        </div>
+        <div class="controls">
+            <button type="submit" class="entity-btn">Save</button>
+            <button class="entity-edit-cancel entity-btn">cancel</button>
+        </div>
+    </form>
+</script>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="/scripts/admin.js"></script>
+
+    <script>
+        app.admin.forms.initCustom(
+            '#product-entity-container', 
+            '#product-list-template',
+            '#product-form-template',
+            new app.collections.Products()
+        );
+    </script>
+{% endblock %}

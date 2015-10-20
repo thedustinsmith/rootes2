@@ -1,0 +1,63 @@
+{% extends '../layout.html' %}
+{% set bodyClass='embed' %}
+{% block title %}My Page{% endblock %}
+
+{% block content %}
+<div class="admin">
+    <h3>{= grower.Name =}'s Locations</h3>
+
+    <div id="location-entity-container"></div>
+</div>
+
+
+<script id="location-list-template" type="text/template">
+<table class="location-list entity-list">
+    <thead><tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th></th>
+    </tr></thead>
+    <tbody>
+    {{#Items}}
+    <tr data-id="{{ID}}">
+        <td>{{ID}}</td>
+        <td>{{Name}}</td>
+        <td>
+            <button class="fa fa-edit entity-edit entity-btn"></button>
+            <button class="fa fa-trash entity-remove entity-btn"></button>
+        </td>
+    </tr>
+    {{/Items}}
+    </tbody>
+</table>
+<button class="entity-add"><i class="fa fa-plus"></i>Add a Grower</button>
+</script>
+
+<script id="location-form-template" type="text/template">
+    <form>
+        <div class="controls">
+            <label>Name</label>
+            <input type="text" name="Name" />
+        </div>
+        <div class="controls">
+            <button type="submit">Save</button>
+            <button class="entity-edit-cancel">cancel</button>
+        </div>
+    </form>
+</script>
+{% endblock %}
+
+{% block scripts %}
+    <script src="/scripts/admin.js"></script>
+
+    <script>
+        app.admin.forms.initCustom(
+            '#location-entity-container', 
+            '#location-list-template',
+            '#location-form-template',
+            new app.collections.Locations({
+                growerID: {= grower.ID =}
+            })
+        );
+    </script>
+{% endblock %}

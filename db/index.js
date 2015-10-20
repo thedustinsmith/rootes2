@@ -8,10 +8,16 @@ var knex = require('knex')({
 var bookshelf = require('bookshelf')(knex);
 var product = require('./product')(bookshelf);
 var grower = require('./grower')(bookshelf);
+var applicator = require('./applicator')(bookshelf);
+var location = require('./location')(bookshelf);
 
 module.exports = {
     Product: product.model,
     Products: product.collection,
     Grower: grower.model,
-    Growers: grower.collection
+    Growers: grower.collection,
+    Applicator: applicator.model,
+    Applicators: applicator.collection,
+    Location: location.model,
+    Locations: location.collection
 };

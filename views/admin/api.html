@@ -1,0 +1,110 @@
+{% extends '../layout.html' %}
+
+{% block title %}My Page{% endblock %}
+
+{% block content %}
+<div class="admin">
+    <h1>Rootes Admin</h1>
+
+    <div class="tab-container clearfix">
+        <ul class="tab-nav">
+            <li><button data-tab="product">Products</button></li>
+            <li><button data-tab="grower">Growers</button></li>
+        </ul>
+        <div class="tab-wrap">
+
+            <div class="tab" data-tab="product">
+                <h2>Products</h2>
+                <div class="codebit">
+                    <label>Get</label>
+                    <pre>
+var product = new app.models.Product({
+    ID: 1
+});
+product.fetch().done(function () {
+    log(product.toJSON());
+});
+                    </pre>
+                </div>
+                <div class="codebit">
+                    <label>Update</label>
+                    <pre>
+var product = new app.models.Product({ ID: 1 });
+product.set('Name', 'Updated Product');
+product.save();
+                    </pre>
+                </div>
+                <div class="codebit">
+                    <label>Insert</label>
+                    <pre>
+var product = new app.models.Product();
+product.set({ 
+    Name: 'new Product',
+    RegulationNumber: '393920s'
+});
+product.save();
+                    </pre>
+                </div>
+                <div class="codebit">
+                    <label>Delete</label>
+                    <pre>
+var product = new app.models.Product({ ID: 1 });
+//product.destroy();
+                    </pre>
+                </div>
+            </div>
+
+            <div class="tab" data-tab="grower">
+                <h2>Growers</h2>
+                <div class="codebit">
+                    <label>Get</label>
+                    <pre>
+var grower = new app.models.Grower({
+    ID: 1
+});
+grower.fetch().done(function () {
+    log(grower.toJSON());
+});
+                    </pre>
+                </div>
+                <div class="codebit">
+                    <label>Update</label>
+                    <pre>
+var grower = new app.models.Grower({ ID: 1 });
+grower.set('Phone', '555.555.5555');
+grower.save();
+                    </pre>
+                </div>
+                <div class="codebit">
+                    <label>Insert</label>
+                    <pre>
+var grower = new app.models.Grower();
+grower.set({ 
+    Name: 'new Grower',
+    Address: '123 Maple Str. Wherever, MO'
+});
+grower.save();
+                    </pre>
+                </div>
+                <div class="codebit">
+                    <label>Delete</label>
+                    <pre>
+var grower = new app.models.Grower({ ID: 1 });
+//grower.destroy();
+                    </pre>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+<script src="/scripts/admin.js"></script>
+<script>
+    app.admin.init();
+</script>
+{% endblock %}

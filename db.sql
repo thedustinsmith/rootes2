@@ -14,3 +14,21 @@ CREATE TABLE Grower (
     IsRemoved BOOLEAN NOT NULL DEFAULT false, 
     DateRemoved DATETIME
 );
+
+CREATE TABLE Applicator (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, 
+    Name VARCHAR (255) NOT NULL, 
+    SprayerUnit VARCHAR, 
+    LicenseNumber VARCHAR, 
+    IsRemoved BOOLEAN NOT NULL DEFAULT (0), 
+    DateRemoved DATETIME
+);
+
+CREATE TABLE Location (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
+    GrowerID INTEGER REFERENCES Grower (ID) NOT NULL, 
+    Name VARCHAR (255) NOT NULL, 
+    DateCreated DATETIME NOT NULL DEFAULT (datetime()), 
+    IsRemoved bit NOT NULL DEFAULT (0), 
+    DateRemoved DATETIME
+);

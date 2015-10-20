@@ -1,59 +1,12 @@
 {% extends '../layout.html' %}
-
+{% set bodyClass='embed' %}
 {% block title %}My Page{% endblock %}
 
 {% block content %}
 <div class="admin">
-    <h1>Rootes Admin Forms</h1>
-
-    <h3>Products</h3>
-    <div id="product-entity-container"></div>
-
     <h3>Growers</h3>
     <div id="grower-entity-container"></div>
 </div>
-
-<script id="product-list-template" type="text/template">
-<table class="product-list entity-list">
-    <thead><tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Regulation #</th>
-        <th></th>
-    </tr></thead>
-    <tbody>
-    {{#Items}}
-    <tr data-id="{{ID}}">
-        <td>{{ID}}</td>
-        <td>{{Name}}</td>
-        <td>{{RegulationNumber}}</td>
-        <td>
-            <button class="fa fa-edit entity-edit"></button>
-            <button class="fa fa-trash entity-remove"></button>
-        </td>
-    </tr>
-    {{/Items}}
-    </tbody>
-</table>
-<button class="entity-add">Add a Product</button>
-</script>
-
-<script id="product-form-template" type="text/template">
-    <form>
-        <div class="controls">
-            <label>Name</label>
-            <input type="text" name="Name" />
-        </div>
-        <div class="controls">
-            <label>Regulation #</label>
-            <input type="text" name="RegulationNumber" />
-        </div>
-        <div class="controls">
-            <button type="submit">Save</button>
-            <button class="entity-edit-cancel">cancel</button>
-        </div>
-    </form>
-</script>
 
 <script id="grower-list-template" type="text/template">
 <table class="grower-list entity-list">
@@ -74,15 +27,17 @@
         <td>{{Phone}}</td>
         <td>{{County}}</td>
         <td>
-            <button class="fa fa-edit entity-edit"></button>
-            <button class="fa fa-trash entity-remove"></button>
+            <a href="/admin/locations/?grower={{ID}}" class="fa fa-globe entity-btn"></a>
+            <button class="fa fa-edit entity-edit entity-btn"></button>
+            <button class="fa fa-trash entity-remove entity-btn"></button>
         </td>
     </tr>
     {{/Items}}
     </tbody>
 </table>
-<button class="entity-add">Add a Grower</button>
+<button class="entity-add"><i class="fa fa-plus"></i>Add a Grower</button>
 </script>
+
 <script id="grower-form-template" type="text/template">
     <form>
         <div class="controls">
@@ -112,5 +67,13 @@
 
 {% block scripts %}
     <script src="/scripts/admin.js"></script>
-    <script>app.admin.forms.init();</script>
+
+    <script>
+        app.admin.forms.initCustom(
+            '#grower-entity-container', 
+            '#grower-list-template',
+            '#grower-form-template',
+            new app.collections.Growers()
+        );
+    </script>
 {% endblock %}

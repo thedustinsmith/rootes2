@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../../db/index');
+var _ = require('lodash');
 
 router.get('/', function (req, res, next) {
     db.Growers.query({
@@ -42,5 +43,22 @@ router.delete('/:id', function (req, res, next) {
         res.send({});
     });
 });
+
+router.get('/:id/locations', function (req, res, next) {
+    db.Locations.findByGrower(req.params.id).done(function (locations) {
+        res.json(locations.toJSON());
+    });
+});
+
+router.post('/:id/locations', function (req, res, next) {
+    var body = _.extend({
+        GrowerID: req.params.id
+    }, req.body);
+
+    db.Location.forge(body).save().done(function (loca) {
+        res.json(loca.toJSON());
+    });
+});
+
 
 module.exports = router;

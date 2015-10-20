@@ -1,3 +1,4 @@
+@blue: rgb(128, 153, 175);
 .admin {
     .tab-nav {
         list-style: none;
@@ -54,5 +55,41 @@
             bottom: 5px;
             right: 5px;
         }
+    }
+    .entity-add {
+        background: @blue;
+        color: white;
+        border-radius: 5px;
+        border: 0;
+        padding: 5px 10px;
+
+        .fa {
+            padding-right: 5px;
+        }
+    }
+    .entity-list {
+        border-collapse: collapse;
+        thead th {
+            background: @blue;
+            color: white;
+            padding: 5px;
+        }
+        td {
+            padding: 1px 10px;
+        }
+    }
+    .entity-btn {
+        background: @blue;
+        color: white;
+        border-radius: 5px;
+        border: 0;
+        padding: 5px 7px;
+        text-decoration: none;
+    }
+
+    iframe {
+        width: 100%;
+        min-height: 500px;
+        border: 1px solid #ccc;
     }
 }
