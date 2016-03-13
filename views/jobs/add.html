@@ -1,0 +1,196 @@
+{% extends '../layout.html' %}
+
+{% block title %}My Page{% endblock %}
+
+{# commenting out this head part - although I think it's useful
+
+{% block head %}
+  {% parent %}
+{% endblock %}
+
+#}
+
+{% block content %}
+
+<h1>Add a job</h1>
+<!--
+    {=applicators=}
+    -->
+
+<form method="post" action="/jobs/add">
+    <fieldset>
+        <legend>Applicator</legend>
+        <div class="grid">
+             <div class="col-1-2">
+                <div class="control-wrap">
+                    <label for="Job[ApplicatorID]">Applicator:</label>
+                    <div class="control">
+                        <select name="Job[ApplicatorID]">
+                            {% for applicator in applicators %}
+                            <option value="{= applicator.ID =}">{= applicator.Name =}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-1-2">
+                <div class="control-wrap">
+                    <label for="Job[UnitNumber]">Unit Number:</label>
+                    <div class="control">
+                        <input type="text" id="Job[UnitNumber]" name="Job[UnitNumber]" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-1-2">
+                <div class="control-wrap">
+                    <label for="Job[WaterAmount]">Water Amount:</label>
+                    <div class="control">
+                        <input type="number" id="Job[WaterAmount]" name="Job[WaterAmount]" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="grid">
+        <legend>Job Date</legend>
+        <div class="col-1-3 mobile-col-1-1">
+            <div class="control-wrap">
+                <label for="Job[JobDate]">Date:</label>
+                <div class="control">
+                    <input type="date" id="Job[JobDate]" name="Job[JobDate]" />
+                </div>
+            </div>
+        </div>
+        <div class="col-1-3 mobile-col-1-1">
+            <div class="control-wrap">
+                <label for="Job[StartTime]">Start Time:</label>
+                <div class="control">
+                    <input type="time" id="Job[StartTime]" name="Job[StartTime]" />
+                </div>
+            </div>
+        </div>
+        <div class="col-1-3 mobile-col-1-1">
+            <div class="control-wrap">
+                <label for="Job[EndTime]">End Time:</label>
+                <div class="control">
+                    <input type="time" id="Job[EndTime]" name="Job[EndTime]" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Weather</legend>
+        <div class="grid">
+            <div class="col-1-2">
+                <div class="control-wrap">
+                    <label for="Job[WindSpeed]">Wind Speed:</label>
+                    <div class="control">
+                        <input type="number" id="Job[WindSpeed]" name="Job[WindSpeed]" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-1-2">
+                <div class="control-wrap">
+                    <label>Wind Direction:</label>
+                    <div class="control">
+                        <label>
+                            <input type="radio" name="Job[WindDirection]" value="N" id="Wind-Drection-N" />
+                        N</label>
+                        <label>
+                            <input type="radio" name="Job[WindDirection]" value="NW" id="Wind-Drection-NW" />
+                        NW</label>
+                        <label>
+                            <input type="radio" name="Job[WindDirection]" value="NE" id="Wind-Drection-NE" />
+                        NE</label>
+                        <label>
+                            <input type="radio" name="Job[WindDirection]" value="E" id="Wind-Drection-E" />
+                        E</label>
+                        <label>
+                            <input type="radio" name="Job[WindDirection]" value="W" id="Wind-Drection-W" />
+                        W</label>
+                        <label>
+                            <input type="radio" name="Job[WindDirection]" value="S" id="Wind-Drection-S" />
+                        S</label>
+                        <label>
+                            <input type="radio" name="Job[WindDirection]" value="SW" id="Wind-Drection-SW" />
+                        SW</label>
+                        <label>
+                            <input type="radio" name="Job[WindDirection]" value="SE" id="Wind-Drection-SE" />
+                        SE</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-1-3">
+                <div class="control-wrap">
+                    <label for="Job[WeatherCondition]">Weather Conditions:</label>
+                    <div class="control">
+                        <input type="text" id="Job[WeatherCondition]" name="Job[WeatherCondition]" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-1-3">
+                <div class="control-wrap">
+                    <label for="Job[Humidity]">Humidity:</label>
+                    <div class="control">
+                        <input type="text" id="Job[Humidity]" name="Job[Humidity]" />
+                    </div>
+                </div>
+            </div>
+             <div class="col-1-3">
+                <div class="control-wrap">
+                    <label for="Job[Temperature]">Temperature:</label>
+                    <div class="control">
+                        <input type="number" id="Job[Temperature]" name="Job[Temperature]" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Products</legend>
+        <div class="dlp-list" id="product-list" data-template="#product-tmpl">
+
+        </div>
+    </fieldset>
+    <div class="actions">
+        <button type="submit">Save Job</button>
+    </div>
+</form>
+
+<script type="text/template" id="product-tmpl">
+    <div class="dlp-item grid">
+        <div class="col-1-2 {{#new}}dlp-new{{/new}}">
+            <div class-"control-wrap">
+                <label>Product</label>
+                <div class="control">
+                    <select name="JobProducts[{{ix}}][ProductID]">
+                        <option value="-1">-- Select a Product --</option>
+                        {% for product in products %}
+                            <option value="{= product.ID =}">{= product.Name =}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-1-2">
+            <div class="control-JobProducts">
+                <label for="jobproduct[{{ix}}].Rate">Rate:</label>
+                <div class="control">
+                    <input type="number" name="JobProducts[{{ix}}][Rate]" id="JobProducts[{{ix}}][Rate]" />
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+Job.init();
+</script>
+{% endblock %}
